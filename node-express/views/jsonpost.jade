@@ -1,0 +1,6 @@
+doctype html
+html
+  head
+    title= title
+  body
+    |<script>window.parent.postMessage({uuid: "#{uuid}", payload: "#{payload}"}, "*");</script>
