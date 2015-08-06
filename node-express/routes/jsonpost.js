@@ -4,9 +4,7 @@ var router = express.Router();
 var responseTemplate = "<!DOCTYPE html><html><head><title></title></head><body><script>window.parent.postMessage({uuid: '{{uuid}}', payload: '{{payload}}'}, '{{origin}}');</script></body></html>";
 
 router.post('/', function(req,res,next) {
-    var payload = JSON.parse(req.body.payload);
-
-    payload.three = 4;
+    var payload = processPayload(JSON.parse(req.body.payload));
 
     var response = responseTemplate
                     .replace(/\{\{uuid\}\}/, req.body.uuid)
@@ -16,5 +14,18 @@ router.post('/', function(req,res,next) {
     res.send(response);
     res.end();
 });
+
+function processPayload(payload) {
+    var menagerie = {
+        Dog: "Dogs are great and so are you!",
+        Cat: "Cats are nice, but Dogs are better ;)",
+        Bird: "Birds are, well, for the birds"
+    };
+
+    return {
+        name : payload.name,
+        message : menagerie[payload.animal]
+    };
+}
 
 module.exports = router;

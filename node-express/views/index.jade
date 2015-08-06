@@ -1,5 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}, Ray
+  h1 Request
+  p Enter your name
+  input#name(type="text", name="name")
+  p Enter your favorite type of pet
+  select#animal
+    option Dog
+    option Cat
+    option Bird
+  p
+    button#submit submit
+
+  h1 Response
+  div#output Waiting...
+  
