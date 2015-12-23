@@ -1,3 +1,4 @@
 [submodule "node-express/public/javascripts/jsonpost"]
 	path = node-express/public/javascripts/jsonpost
 	url = https://github.com/rwadkins/jsonpost.git
+	branch=master
